@@ -1,11 +1,16 @@
 import React from 'react';
 import './App.css';
-import Login from './Components/Login';
+import Main from './Routing';
+import {
+  Provider
+} from 'react-redux';
+import store from './Store';
+
 function App() {
   return (
-    <div className="App">
-      <Login className="App-header" />
-    </div>
+    <Provider store={store}>
+      <Main />
+    </Provider>
   );
 }
 

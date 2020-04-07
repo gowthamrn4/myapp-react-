@@ -1,0 +1,30 @@
+import React, { Component } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import './auth.css'
+
+
+class Auth extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        }
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.props.history.push('/login');
+        }, 5000)
+    }
+
+    render() {
+        return (
+            <div className="Circle">
+                <CircularProgress color="secondary" />
+            </div>
+        );
+    }
+
+
+}
+
+export default Auth;
