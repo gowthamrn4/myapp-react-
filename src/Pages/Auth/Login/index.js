@@ -3,6 +3,7 @@ import './login.css';
 import { validationService } from '../../../Components/Validation/service';
 import * as Auth from '../../../Action/Auth';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 class Login extends Component {
     constructor(props) {
@@ -109,4 +110,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
