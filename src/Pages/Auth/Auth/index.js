@@ -12,7 +12,13 @@ class Auth extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            this.props.history.push('/login');
+            let userToken = localStorage.getItem('token');
+            let token = JSON.parse(userToken)
+            if (token) {
+                this.props.history.push('/dashboard');
+            } else {
+                this.props.history.push('/login');
+            }
         }, 5000)
     }
 

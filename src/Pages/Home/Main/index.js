@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
+import Header from '../../../Components/Header/index';
+import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputs: {
-                username: {
-                    type: "email",
-                    value: null
-                },
-                password: {
-                    type: "password",
-                    value: null
-                },
-            }
+
         }
     }
 
     render() {
         return (
-            <div className="container">
-                <h2>Home</h2>
+            <div>
+                <Header user={this.props.user} history={this.props.history} />
             </div>
         );
     }
 }
 
 
-export default Dashboard;
+
+function mapStateToProps(state) {
+    return {
+        user: state.AuthReducers.user,
+    }
+}
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         login: (val) => dispatch(Auth.LOGIN(val)),
+//     }
+// }
+
+export default connect(mapStateToProps, null)(Dashboard);

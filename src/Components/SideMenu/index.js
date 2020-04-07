@@ -10,8 +10,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import GroupIcon from '@material-ui/icons/Group';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import DnsIcon from '@material-ui/icons/Dns';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import AppsIcon from '@material-ui/icons/Apps';
+import history from '../../Routing/history';
 
 const useStyles = makeStyles({
     list: {
@@ -49,22 +54,30 @@ export default function SideMenu() {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                <ListItem button>
+                    <ListItemIcon> <AppsIcon /></ListItemIcon>
+                    <ListItemText primary={'Home'} />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon> <GroupIcon /></ListItemIcon>
+                    <ListItemText primary={'Groups'} />
+                </ListItem>
+                <ListItem button onClick={() => {
+                    history.push('/hashtag')
+                }}>
+                    <ListItemIcon> <AssessmentIcon /></ListItemIcon>
+                    <ListItemText primary={'Hash Tag'} />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon> <DnsIcon /></ListItemIcon>
+                    <ListItemText primary={'Badges'} />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon> <AccountCircleIcon /></ListItemIcon>
+                    <ListItemText primary={'Users'} />
+                </ListItem>
             </List>
             <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 
@@ -72,7 +85,7 @@ export default function SideMenu() {
         <div>
             <React.Fragment >
                 <Button onClick={toggleDrawer('left', true)}>
-                    <MenuIcon style={{}} />
+                    <MenuIcon style={{ color: 'white' }} />
                 </Button>
                 <SwipeableDrawer
                     anchor={"left"}
