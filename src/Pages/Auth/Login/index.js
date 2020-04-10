@@ -4,6 +4,7 @@ import { validationService } from '../../../Components/Validation/service';
 import * as Auth from '../../../Action/Auth';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 class Login extends Component {
     constructor(props) {
@@ -86,6 +87,11 @@ class Login extends Component {
                                 }}
                             />
                         </div>
+                        {
+                            this.props.loading ? <LinearProgress />
+                                : null
+                        }
+
                         <div className="links">
                             <a>Privacy Policy</a>
                             <a>Terms & Conditions</a>

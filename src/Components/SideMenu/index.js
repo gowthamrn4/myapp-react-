@@ -17,7 +17,7 @@ import DnsIcon from '@material-ui/icons/Dns';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import AppsIcon from '@material-ui/icons/Apps';
 import history from '../../Routing/history';
-
+import '../Header/header.css';
 const useStyles = makeStyles({
     list: {
         width: 250,
@@ -53,8 +53,10 @@ export default function SideMenu() {
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
         >
-            <List>
-                <ListItem button>
+            <List >
+                <ListItem button onClick={() => {
+                    history.push('/dashboard')
+                }}>
                     <ListItemIcon> <AppsIcon /></ListItemIcon>
                     <ListItemText primary={'Home'} />
                 </ListItem>

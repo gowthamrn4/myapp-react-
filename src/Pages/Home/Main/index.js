@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, forwardRef } from 'react';
 import Header from '../../../Components/Header/index';
 import { connect } from 'react-redux';
+import * as Common from '../../../Action/Common';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class Dashboard extends Component {
         this.state = {
 
         }
+        this.props.gethashtag()
     }
 
     render() {
@@ -26,10 +28,11 @@ function mapStateToProps(state) {
         user: state.AuthReducers.user,
     }
 }
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         login: (val) => dispatch(Auth.LOGIN(val)),
-//     }
-// }
 
-export default connect(mapStateToProps, null)(Dashboard);
+function mapDispatchToProps(dispatch) {
+    return {
+        gethashtag: () => dispatch(Common.GET_HASHTAG()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

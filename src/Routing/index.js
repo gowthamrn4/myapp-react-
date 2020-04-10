@@ -8,8 +8,9 @@ import {
     Dashboard,
     HashTag
 } from '../Pages/Home';
-import { Route, Router, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 import history from './history';
+import Header from '../Components/Header';
 
 const Main = () => {
     return (
@@ -18,8 +19,11 @@ const Main = () => {
                 <Route exact path="/" component={Auth} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/hashtag" component={HashTag} />
+                <Switch>
+                    {/* <Header /> */}
+                    <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/hashtag" component={HashTag} />
+                </Switch>
             </Switch>
         </Router>
     )

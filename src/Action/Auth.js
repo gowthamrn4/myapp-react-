@@ -7,7 +7,6 @@ import { userService } from '../Service/AuthService';
 import history from '../Routing/history';
 
 export const LOGIN = (val) => (dispatch) => {
-    console.log('action ', val)
     try {
         dispatch({ type: LOGIN_INIT });
         userService.login(val).then((res) => {

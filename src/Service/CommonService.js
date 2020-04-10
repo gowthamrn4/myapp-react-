@@ -1,14 +1,14 @@
 import axios from 'axios';
-import checkAsyncStorage from '../Components/Storage';
-import { MAIN_URL } from './API_URL';
+import { MAIN_URL } from './Api';
 
 async function POSTMETHOD(data, baseurl) {
     try {
-        const userToken = await checkAsyncStorage();
+        let userToken = localStorage.getItem('token');
+        let token = JSON.parse(userToken)
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                'x-auth-token': userToken.token
+                'x-auth-token': token
             }
         }
         const body = JSON.stringify(data);
@@ -22,13 +22,13 @@ async function POSTMETHOD(data, baseurl) {
 
 
 async function GETMETHOD(baseurl) {
-    console.log('base', baseurl)
     try {
-        const userToken = await checkAsyncStorage();
+        let userToken = localStorage.getItem('token');
+        let token = JSON.parse(userToken)
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                'x-auth-token': userToken.token
+                'x-auth-token': token
             }
         }
         const res = await axios.get(MAIN_URL + baseurl, config);
@@ -40,11 +40,12 @@ async function GETMETHOD(baseurl) {
 
 async function PUTMETHOD(data, baseurl) {
     try {
-        const userToken = await checkAsyncStorage();
+        let userToken = localStorage.getItem('token');
+        let token = JSON.parse(userToken)
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                'x-auth-token': userToken.token
+                'x-auth-token': token
             }
         }
         const body = JSON.stringify(data);
@@ -58,11 +59,12 @@ async function PUTMETHOD(data, baseurl) {
 
 async function DELETEMETHOD(baseurl) {
     try {
-        const userToken = await checkAsyncStorage();
+        let userToken = localStorage.getItem('token');
+        let token = JSON.parse(userToken)
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                'x-auth-token': userToken.token
+                'x-auth-token': token
             }
         }
         const res = await axios.delete(MAIN_URL + baseurl, config)

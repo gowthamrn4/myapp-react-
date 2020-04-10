@@ -41,7 +41,8 @@ export const TIMELINEPOST = {
     UNDOHUGPOST: '/api/medappposts/undohug/',
     HIVEFIVE: '/api/medappposts/highfive/',
     UNDOHIVEFIVE: '/api/medappposts/undohighfive/',
-    GETHASHTAG: '/api/medappposts/tags/all'
+    GETHASHTAG: '/api/medappposts/tags/all',
+    CREATEHASHTAG: '/api/medappposts/tags/createupdate/tag'
 }
 
 export const CHATROOMS = {

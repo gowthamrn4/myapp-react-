@@ -17,10 +17,12 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import SideMenu from '../SideMenu';
+import history from '../../Routing/history';
+import './header.css';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
-        flexGrow: 1,
+        flexGrow: 1
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -82,8 +84,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Header(user, history) {
-    console.log('user', user, history)
+export default function Header(user) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -108,6 +109,11 @@ export default function Header(user, history) {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+    const logout = () => {
+        history.push('/login')
+        localStorage.clear();
+    }
+
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
@@ -121,6 +127,7 @@ export default function Header(user, history) {
         >
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={logout}>Logout</MenuItem>
         </Menu>
     );
 
@@ -166,8 +173,8 @@ export default function Header(user, history) {
     );
 
     return (
-        <div className={classes.grow}>
-            <AppBar position="static">
+        <div className={classes.grow} >
+            <AppBar position="static" className={"header"}>
                 <Toolbar>
                     <SideMenu history={history} />
                     <Typography className={classes.title} variant="h6" noWrap>
