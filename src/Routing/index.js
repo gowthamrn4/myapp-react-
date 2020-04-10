@@ -9,21 +9,18 @@ import {
     HashTag
 } from '../Pages/Home';
 import { Route, Router, Switch, BrowserRouter } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
-export const customHistory = createBrowserHistory();
+import history from './history';
 
 const Main = () => {
     return (
-        <Router history={customHistory} forceRefresh={true}>
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path="/" component={Auth} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/signup" component={Signup} />
-                    <Route exact path="/dashboard" component={Dashboard} />
-                    <Route exact path="/hashtag" component={HashTag} />
-                </Switch>
-            </BrowserRouter>
+        <Router history={history} forceRefresh={true}>
+            <Switch>
+                <Route exact path="/" component={Auth} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/hashtag" component={HashTag} />
+            </Switch>
         </Router>
     )
 }
